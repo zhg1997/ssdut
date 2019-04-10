@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+class  Clock
+{ 
+private :
+    int hour, minute, second;            //关于时间的数据；
+public :
+   Clock (int h, int m, int s){
+        hour= ( h >=0 && h <=23)? h : 0 ;
+        minute= ( m >=0 && m <=59)? m : 0 ;
+        second= ( s >=0 && s <=59)? s : 0 ;    
+        cout<<"constructiong"<<endl;
+   }
+   ~Clock (){
+	   cout<<"destructiong"<<endl;
+   }
+   Clock(Clock & c)
+   {
+       hour=c.hour;
+	   minute=c.minute;
+	   second=c.second;
+	   cout<<"copy constructiong"<<endl;
+   }
+   void showClock ( ){
+         cout<<hour<<minute<<second<<endl;    
+   }
+   Clock add(){
+
+     
+   }
+};
+
+void main(){
+
+	Clock c1(1,2,3);
+	Clock c2=	c1.add();
+    c2.showClock();
+}

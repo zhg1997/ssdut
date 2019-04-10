@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+class Student{
+private:
+	char name[20];
+	int age;
+    float score;
+public:
+    Student(char * n, int a, int s){
+        strcpy(name,n);
+        age=a;
+        score=s;
+		sum+=score;               //构造同时把score累加到静态成员sum
+	}
+	static float sum;             //声明静态数据成员
+	static float getAverage();      //声明静态函数成员
+	void display();               //输出总和与平均值
+};
+float Student::getAverage(){return sum/3;} //实现时函数不需要用static修饰
+float Student::sum=0;             //初始化静态数据成员
+void Student::display(){           //成员函数引用静态成员
+	cout<<"sum="<<sum<<"   average="<<getAverage()<<endl;
+}
+int main(){
+	//静态成员函数、静态成员数据不定义对象用类可以访问
+	cout<<"sum="<<Student::sum<<"   average="<<Student::getAverage()<<endl;
+	Student stud[3]={ Student("zhang san",20,60), Student("Li si",19,70), Student("Wang wu",18,78)  };
+	//静态成员函数、静态成员数据定义对象后，通过类访问
+	cout<<"sum="<<Student::sum<<"   average="<<Student::getAverage()<<endl;
+	//静态成员函数、静态成员数据定义对象后，通过对象访问
+	cout<<"sum="<<stud[0].sum<<"   average="<<stud[0].getAverage()<<endl;
+//成员函数
+    stud[0].display();
+	return 0;
+}
