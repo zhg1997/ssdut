@@ -1,0 +1,8 @@
+AB -> E
+B->C
+B->D
+
+(1)(AB)+: ABCDE
+(2)AB
+(3)1NF
+(4)(ABE),(ABCD) -> (ABE),(BC),(ABD) -> (ABE),(BC),(BD),(AB) ->(ABE),(BCD)
